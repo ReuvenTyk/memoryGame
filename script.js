@@ -43,7 +43,7 @@ function showCard(child) {
 
 function checkCards(arr) {
   if (arr[0] === arr[1]) {
-    for (let i = 0; i < cards.length; i++) {
+    for (let i = cards.length; i > 0; i--) {
       if (document.getElementById(cards[i]).classList[1] === arr[0]) {
         /* cards.splice(i, 1); */
         console.log("YEY");
