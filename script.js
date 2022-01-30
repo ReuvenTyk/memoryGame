@@ -1,16 +1,22 @@
 //Set array of Id cards
-const sun1 = document.getElementById("sun1");
+/* const sun1 = document.getElementById("sun1");
 const sun2 = document.getElementById("sun2");
 const rose1 = document.getElementById("rose1");
 const rose2 = document.getElementById("rose2");
-const cards = [sun1, rose1, rose2, sun2];
+const cards = [sun1, rose1, rose2, sun2]; */
+const cards = [
+  document.getElementById("sun1"),
+  document.getElementById("sun2"),
+  document.getElementById("rose1"),
+  document.getElementById("rose2"),
+];
 let cardsMatch = []; // card1, card2
 let flips = 0;
 
 //Get clicked card by id as Parameter
 function card(card) {
   card.addEventListener("click", () => {
-    showCard(card.children[0]);
+    showCard(card);
     console.log(card.classList[1]);
     cardsMatch.push(card.classList[1]);
     console.log(cardsMatch);
@@ -24,15 +30,17 @@ function card(card) {
 }
 
 //Get the Argument id by Iteration and call the function
-for (let i = 0; i < cards.length; i++) {
-  card(cards[i]);
+function start() {
+  for (let i = 0; i < cards.length; i++) {
+    card(cards[i]);
+  }
 }
 
 // Show card function
 function showCard(child) {
   if (flips < 2) {
     flips++;
-    child.classList.add("flipped-card");
+    child.children[0].classList.add("flipped-card");
     child.classList.add("cant-flip");
     console.log(flips);
     return;
@@ -58,7 +66,7 @@ function checkCards(arr, globalArr) {
     }, 1000);
   }
 }
-
+start();
 //Problems - >
 // 1) we need to make only 2 cards open each iteration - DONE!!
 // 2) create the option to flip back
