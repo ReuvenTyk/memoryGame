@@ -3,28 +3,25 @@ const sun1 = document.getElementById("sun1");
 const sun2 = document.getElementById("sun2");
 const rose1 = document.getElementById("rose1");
 const rose2 = document.getElementById("rose2");
-const cards = [sun1.id, rose1.id, rose2.id, sun2.id];
-let cardsMatch = [];
+const cards = [sun1, rose1, rose2, sun2];
+let cardsMatch = []; // card1, card2
 let flips = 0;
 
 //Get clicked card by id as Parameter
-const card = (cardId) => {
-  let card = document.getElementById(cardId);
-
+function card(card) {
   card.addEventListener("click", () => {
     showCard(card.children[0]);
-    card.classList.add("cant-flip");
     console.log(card.classList[1]);
     cardsMatch.push(card.classList[1]);
     console.log(cardsMatch);
     if (flips == 2) {
-      checkCards(cardsMatch);
+      checkCards(cardsMatch, cards);
       console.log("flips - >", flips);
       flips = 0;
       cardsMatch = [];
     }
   });
-};
+}
 
 //Get the Argument id by Iteration and call the function
 for (let i = 0; i < cards.length; i++) {
@@ -36,23 +33,29 @@ function showCard(child) {
   if (flips < 2) {
     flips++;
     child.classList.add("flipped-card");
+    child.classList.add("cant-flip");
     console.log(flips);
     return;
   }
 }
 
-function checkCards(arr) {
+function checkCards(arr, globalArr) {
   if (arr[0] === arr[1]) {
-    for (let i = cards.length; i > 0; i--) {
-      if (document.getElementById(cards[i]).classList[1] === arr[0]) {
-        /* cards.splice(i, 1); */
+    for (let i = globalArr.length - 1; i >= 0; i--) {
+      if (globalArr[i].classList[1] === arr[0]) {
         console.log("YEY");
+        globalArr.splice(i, 1);
+        console.log(globalArr);
       }
     }
   } else {
     console.log("BOOOOO");
-    //card.classList.remove("cant-flip");
-    //card.classList.remove("flipped-card");
+    setTimeout(() => {
+      for (let x = 0; x < globalArr.length; x++) {
+        globalArr[x].children[0].classList.remove("cant-flip");
+        globalArr[x].children[0].classList.remove("flipped-card");
+      }
+    }, 1000);
   }
 }
 
@@ -61,7 +64,3 @@ function checkCards(arr) {
 // 2) create the option to flip back
 // 3) checkCards() needs to run in the second click and not the second
 // 4) make start over active
-
-/*  array.splice
-  תוריד מהמארך CARDS במקום I משתנה אחד
-        */
