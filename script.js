@@ -10,19 +10,18 @@ const cards = [
   document.getElementById("rose1"),
   document.getElementById("rose2"),
 ];
+const scores = document.getElementById("scores");
 let cardsMatch = []; // card1, card2
-let flips = 0;
+let flips = 0,
+  userScore = 0;
 
 //Get clicked card by id as Parameter
 function card(card) {
   card.addEventListener("click", () => {
     showCard(card);
-    console.log(card.classList[1]);
     cardsMatch.push(card.classList[1]);
-    console.log(cardsMatch);
     if (flips == 2) {
       checkCards(cardsMatch, cards);
-      console.log("flips - >", flips);
       flips = 0;
       cardsMatch = [];
     }
@@ -42,29 +41,27 @@ function showCard(child) {
     flips++;
     child.children[0].classList.add("flipped-card");
     child.classList.add("cant-flip");
-    console.log(flips);
     return;
   }
 }
 
 function checkCards(arr, globalArr) {
   if (arr[0] === arr[1]) {
+    userScore += 1;
     for (let i = globalArr.length - 1; i >= 0; i--) {
       if (globalArr[i].classList[1] === arr[0]) {
-        console.log("YEY");
         globalArr.splice(i, 1);
-        console.log(globalArr);
       }
     }
   } else {
-    console.log("BOOOOO");
     setTimeout(() => {
       for (let x = 0; x < globalArr.length; x++) {
-        globalArr[x].children[0].classList.remove("cant-flip");
+        globalArr[x].classList.remove("cant-flip");
         globalArr[x].children[0].classList.remove("flipped-card");
       }
     }, 1000);
   }
+  scores.innerHTML = userScore;
 }
 start();
 //Problems - >

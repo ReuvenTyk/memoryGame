@@ -26,6 +26,7 @@
       footer {
         display: flex;
         justify-content: space-around;
+        align-items: center;
       }
       .cards {
         margin: auto;
@@ -91,6 +92,16 @@
         box-shadow: 5px 5px #899;
         border-radius: 10px;
       }
+      .scores {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      #scores {
+        padding-left: 10px;
+        font-size: 1.3rem;
+      }
     </style>
   </head>
   <body>
@@ -107,17 +118,10 @@
       <div id="sun1" class="flip-card sun">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img
-              src="./img/questionMark.png"
-              alt="Question Mark"
-            />
+            <img src="./img/questionMark.png" alt="Question Mark" />
           </div>
           <div class="flip-card-back">
-            <img
-              class="back-card"
-              src="./img/sun.png"
-              alt="sun1"
-            />
+            <img class="back-card" src="./img/sun.png" alt="sun1" />
           </div>
         </div>
       </div>
@@ -125,17 +129,10 @@
       <div id="rose1" class="flip-card rose">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img
-              src="./img/questionMark.png"
-              alt="Question Mark"
-            />
+            <img src="./img/questionMark.png" alt="Question Mark" />
           </div>
           <div class="flip-card-back">
-            <img
-              class="back-card"
-              src="./img/rose.png"
-              alt="rose1"
-            />
+            <img class="back-card" src="./img/rose.png" alt="rose1" />
           </div>
         </div>
       </div>
@@ -143,17 +140,10 @@
       <div id="rose2" class="flip-card rose">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img
-              src="./img/questionMark.png"
-              alt="Question Mark"
-            />
+            <img src="./img/questionMark.png" alt="Question Mark" />
           </div>
           <div class="flip-card-back">
-            <img
-              class="back-card"
-              src="./img/rose.png"
-              alt="rose2"
-            />
+            <img class="back-card" src="./img/rose.png" alt="rose2" />
           </div>
         </div>
       </div>
@@ -161,17 +151,10 @@
       <div id="sun2" class="flip-card sun">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img
-              src="./img/questionMark.png"
-              alt="Question Mark"
-            />
+            <img src="./img/questionMark.png" alt="Question Mark" />
           </div>
           <div class="flip-card-back">
-            <img
-              class="back-card"
-              src="./img/sun.png"
-              alt="sun2"
-            />
+            <img class="back-card" src="./img/sun.png" alt="sun2" />
           </div>
         </div>
       </div>
@@ -184,7 +167,7 @@
       </div>
       <div class="scores">
         <h2>Matches:</h2>
-        <p></p>
+        <p id="scores">0</p>
       </div>
       <button>Start Over</button>
     </footer>
