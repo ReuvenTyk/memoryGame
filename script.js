@@ -11,9 +11,11 @@ const cards = [
   document.getElementById("rose2"),
 ];
 const scores = document.getElementById("scores");
+const timer = document.getElementById("timer");
 let cardsMatch = []; // card1, card2
 let flips = 0,
-  userScore = 0;
+  userScore = 0,
+  sec = 0;
 
 //Get clicked card by id as Parameter
 function card(card) {
@@ -30,6 +32,8 @@ function card(card) {
 
 //Get the Argument id by Iteration and call the function
 function start() {
+  timer.innerHTML = 0;
+  setTimeout(timerGo, 1000);
   for (let i = 0; i < cards.length; i++) {
     card(cards[i]);
   }
@@ -63,6 +67,18 @@ function checkCards(arr, globalArr) {
   }
   scores.innerHTML = userScore;
 }
+
+function timerGo() {
+  let c;
+  timer.innerHTML = sec;
+  if (cards == "") {
+    clearTimeout(c);
+    return;
+  }
+  c = setTimeout(timerGo, 1000);
+  sec += 1;
+}
+
 start();
 //Problems - >
 // 1) we need to make only 2 cards open each iteration - DONE!!
